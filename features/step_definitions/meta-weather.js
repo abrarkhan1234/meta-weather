@@ -12,7 +12,7 @@ When ('the location is set to {string}', function (location) {
 });
 
 Then ('the weather forecast state should be {string}', function (weatherState) {
-  return this.getWeatherDataFromApi ().then (function (response) {
+  return this.getWeatherDataFromApi ().then ((response) => {
     expect (response.weather_state_name).to.eql (weatherState);
   });
 });
