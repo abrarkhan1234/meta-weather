@@ -1,0 +1,22 @@
+{
+  "name": "meta-weather",
+  "version": "0.0.1",
+  "description": "An example of testing APIs using Cucumber Test Framework",
+  "scripts": {
+    "test:cucumber": "./node_modules/.bin/cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrarkhan1234/meta-weather.git"
+  },
+  "author": "Abrar Khan",
+  "bugs": {
+    "url": "https://github.com/abrarkhan1234/meta-weather/issues"
+  },
+  "homepage": "https://github.com/abrarkhan1234/meta-weather#readme",
+  "devDependencies": {
+    "chai": "4.2.0",
+    "cucumber": "5.1.0",
+    "node-fetch": "2.6.0"
+  }
+}
