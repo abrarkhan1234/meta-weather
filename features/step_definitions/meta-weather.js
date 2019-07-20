@@ -29,7 +29,3 @@ Then('the maximum temperature should be {string}', function(maxTemp) {
     const temperature = Math.ceil(weatherData.max_temp);
     expect(temperature.toString()).to.eql(maxTemp);
 });
-
-Given('I have the following woeid {string}', function(woeid) {
-    console.log('WOEID', woeid);
-});

@@ -66,4 +66,3 @@ Feature: Meta Weather API
   #   | 21125     | glasgow   | Glasgow  | 51.506321,-0.12714  |
   #   | 12586539  | mumbai    | Mumbai   | 19.076191,72.875877 |
   #   | 2211096   | karachi   | Karachi  | 24.889780,67.028511 |
-
