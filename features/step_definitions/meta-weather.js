@@ -1,29 +1,35 @@
-const {Given, When, Then} = require ('cucumber');
-const {expect} = require ('chai');
+const { Given, When, Then } = require('cucumber');
+const { expect } = require('chai');
 
-Given ('Today is \{int}\\/{int}\\/{int}', function (year, month, date) {
-  const datePath = `${year}\/${month}\/${date}`;
-  this.setDate (datePath);
+Given('Today is {int}\\/{int}\\/{int}', function(year, month, date) {
+    const datePath = `${year}\/${month}\/${date}`;
+    this.setDate(datePath);
 });
 
-When ('the location is set to {string}', function (location) {
-  return this.setLocation (location);
-  // return this.setWeatherData ();
+When('the location is set to {string}', function(location) {
+    return this.setLocationDetails(location);
 });
 
-Then ('the weather forecast state should be {string}', function (weatherState) {
-  return this.getWeatherDataFromApi ().then ((response) => {
-    expect (response.weather_state_name).to.eql (weatherState);
-  });
+When('I visit the location date endpoint {string}', function(endpoint) {
+    return this.getWeatherDataForLocationAndDate();
 });
 
-Then ('the wind direction should be {string}', function (windDirection) {
-  const weatherData = this.getWeatherData ();
-  expect (weatherData.wind_direction_compass).to.eql (windDirection);
+Then('the weather forecast state should be {string}', function(weatherState) {
+    const weatherData = this.getWeatherData();
+    expect(weatherData.weather_state_name).to.eql(weatherState);
 });
 
-Then ('the maximum temperature should be {string}', function (maxTemp) {
-  const weatherData = this.getWeatherData ();
-  const temperature = Math.ceil (weatherData.max_temp);
-  expect (temperature.toString ()).to.eql (maxTemp);
+Then('the wind direction should be {string}', function(windDirection) {
+    const weatherData = this.getWeatherData();
+    expect(weatherData.wind_direction_compass).to.eql(windDirection);
+});
+
+Then('the maximum temperature should be {string}', function(maxTemp) {
+    const weatherData = this.getWeatherData();
+    const temperature = Math.ceil(weatherData.max_temp);
+    expect(temperature.toString()).to.eql(maxTemp);
+});
+
+Given('I have the following woeid {string}', function(woeid) {
+    console.log('WOEID', woeid);
 });

@@ -2,50 +2,57 @@ const fetch = require('node-fetch');
 const { setWorldConstructor } = require('cucumber');
 
 class MetaWeather {
-  constructor() {
-    this.host = 'https://www.metaweather.com';
-    this.location = null;
-    this.locationWoeid = null;
-    this.date = null;
-    this.weatherData = null;
-  }
+    constructor() {
+        this.host = 'https://www.metaweather.com';
+        this.location = null;
+        this.locationWoeid = null;
+        this.date = null;
+        this.weatherData = null;
+    }
 
-  setDate(date) {
-    this.date = date;
-  }
+    setDate(date) {
+        this.date = date;
+    }
 
-  async setLocation(location) {
-    this.location = location;
-    const queryEndpoint = `${this.host}/api/location/search/?query=${location}`;
+    async setLocationDetails(location) {
+        this.location = location;
+        this.locationWoeid = await this.getLocationWoeid(location);
+    }
 
-    const apiResponse = await fetch(queryEndpoint).catch(err =>
-      console.log('Unable to fetch Location woeId', err)
-    ); // eslint-disable-line no-console
+    async getLocationWoeid(location) {
+        const queryEndpoint = `${this.host}/api/location/search/?query=${location}`;
 
-    const parsedResponse = await apiResponse.json();
+        const apiResponse = await fetch(queryEndpoint).catch(err =>
+            console.log('Unable to fetch Location woeId', err)
+        ); // eslint-disable-line no-console
 
-    this.locationWoeid = parsedResponse[0].woeid;
-  }
+        const parsedResponse = await apiResponse.json();
+        return parsedResponse[0].woeid;
+    }
 
-  async getWeatherDataFromApi() {
-    const locationEndpoint = `${this.host}/api/location/${this.locationWoeid}/${this.date}`;
-    const apiResponse = await fetch(locationEndpoint).catch(err =>
-      console.log('Unable to fetch Location data', err)
-    ); // eslint-disable-line no-console
+    getWoeid() {
+        return this.locationWoeid;
+    }
 
-    const parsedResponse = await apiResponse.json();
+    async getWeatherDataForLocationAndDate() {
+        const locationEndpoint = `${this.host}/api/location/${this.locationWoeid}/${this.date}`;
+        const apiResponse = await fetch(locationEndpoint).catch(err =>
+            console.log('Unable to fetch Location data', err)
+        ); // eslint-disable-line no-console
 
-    setWeatherData(parsedResponse[0]);
-    return parsedResponse[0];
-  }
+        const parsedResponse = await apiResponse.json();
 
-  getWeatherData() {
-    return this.weatherData;
-  }
+        this.setWeatherData(parsedResponse[0]);
+        return parsedResponse[0];
+    }
 
-  setWeatherData(weatherData) {
-    this.weatherData = weatherData;
-  }
+    setWeatherData(weatherData) {
+        this.weatherData = weatherData;
+    }
+
+    getWeatherData() {
+        return this.weatherData;
+    }
 }
 
 setWorldConstructor(MetaWeather);
