@@ -1,0 +1,31 @@
+{
+  "name": "meta-weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:cucumber": "./node_modules/.bin/cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrarkhan1234/meta-weather.git"
+  },
+  "author": "Abrar Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abrarkhan1234/meta-weather/issues"
+  },
+  "homepage": "https://github.com/abrarkhan1234/meta-weather#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^5.1.0",
+    "cucumber-assert": "^2.0.1",
+    "hippie": "0.5.2",
+    "jest": "24.8.0",
+    "node-fetch": "^2.6.0"
+  },
+  "dependencies": {
+    "config": "3.2.1"
+  }
+}
