@@ -16,6 +16,7 @@
   "homepage": "https://github.com/abrarkhan1234/meta-weather#readme",
   "devDependencies": {
     "chai": "4.2.0",
+    "chai-arrays": "^2.0.0",
     "cucumber": "5.1.0",
     "node-fetch": "2.6.0"
   }
