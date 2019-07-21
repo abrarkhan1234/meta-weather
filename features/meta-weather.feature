@@ -3,13 +3,13 @@ Feature: Meta Weather API
   I would like to know that the Weather API is stable
   So that I can provide more personalised messagess
 
-   Scenario Outline: London weather forecast for the next few days is correct
-     Given Today is <date>
-     And the location is set to "<location>"
-     When I visit the location date endpoint "/api/location/woeid/date"
-     Then the weather forecast state should be "<weather-state-name>"
-     And the wind direction should be "<wind-direction>"
-     And the maximum temperature should be "<max-temp>"
+  Scenario Outline: London weather forecast for the next few days is correct
+    Given Today is <date>
+    And the location is set to "<location>"
+    When I visit the location date endpoint "/api/location/woeid/date"
+    Then the weather forecast state should be "<weather-state-name>"
+    And the wind direction should be "<wind-direction>"
+    And the maximum temperature should be "<max-temp>"
 
    Examples:
      | date       | location | weather-state-name | wind-direction | max-temp |
