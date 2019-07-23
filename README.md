@@ -33,7 +33,7 @@ nvm use
 npm install
 ```
 
-#### 4. Run Cucumber Tests
+#### 5. Run Cucumber Tests
 
 ```bash
 npm run test:cucumber
