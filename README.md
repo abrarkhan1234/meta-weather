@@ -21,7 +21,7 @@ nvm install
 
 You will need to restart your terminal in order to start using the `nvm` command.
 
-Configure `nvm` to use the right version of Node. In the `web` directory:
+Configure `nvm` to use the right version of Node.
 
 ```bash
 nvm use
